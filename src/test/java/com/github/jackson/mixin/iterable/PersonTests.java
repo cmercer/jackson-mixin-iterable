@@ -52,6 +52,13 @@ public class PersonTests {
   }
 
   @Test
+  public void iterableOnlySerializationTest() throws JsonProcessingException {
+    String jacksonResult = jacksonMapper.writeValueAsString(personIterable.getPets());
+    String squigglyResult = globalFilterMapper.writeValueAsString(personIterable.getPets());
+    Assert.assertEquals(jacksonResult, squigglyResult);
+  }
+
+  @Test
   public void personCollectionTest() throws JsonProcessingException {
     String jacksonResult = jacksonMapper.writeValueAsString(personCollection);
     String squigglyResult = globalFilterMapper.writeValueAsString(personCollection);
